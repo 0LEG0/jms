@@ -1,0 +1,22 @@
+{
+  "name": "jms",
+  "version": "1.0.0",
+  "description": "JSON Message Switch",
+  "main": "jms.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node jms.js"
+  },
+  "keywords": [
+    "json",
+    "message",
+    "switcher",
+    "jms"
+  ],
+  "author": "0LEG0 <a.i.s@gmx.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "jms-engine": "github:0LEG0/jms-engine",
+    "minimist": "^1.2.5"
+  }
+}
