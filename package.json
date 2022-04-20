@@ -11,13 +11,22 @@
   "keywords": [
     "json",
     "message",
-    "switcher",
+    "switch",
     "jms"
   ],
   "author": "0LEG0 <a.i.s@gmx.com>",
   "license": "Apache-2.0",
   "dependencies": {
     "jms-engine": "github:0LEG0/jms-engine",
-    "minimist": "^1.2.5"
-  }
+    "minimist": "^1.2.5",
+    "jms-telnet": "github:0LEG0/jms-telnet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0LEG0/jms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0LEG0/jms/issues"
+  },
+  "homepage": "https://github.com/0LEG0/jms#readme"
 }
