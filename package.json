@@ -5,7 +5,8 @@
   "main": "jms.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node jms.js"
+    "start": "node jms.js",
+    "postinstall": "node .install.js"
   },
   "keywords": [
     "json",
