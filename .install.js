@@ -1,5 +1,7 @@
 "use strict";
-
+/**
+ * Run to copy modules config files from ./node_modules/[*]/conf/[*] to ./conf/[*]
+ */
 const fs = require("fs");
 
 function copyConf(src, dst) {
