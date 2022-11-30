@@ -1,0 +1,9 @@
+/var/log/jms.log {
+    daily
+    copytruncate
+    delaycompress
+    compress
+    missingok
+    rotate 7
+    minsize 1M
+}

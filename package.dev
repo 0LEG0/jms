@@ -22,7 +22,7 @@
     "jms-regexp": "file:../jms-regexp",
     "jms-scheduler": "file:../jms-scheduler",
     "jms-smpp-gen": "file:../jms-smpp-gen",
-    "jms-smpp": "file:../jms-smpp"
+    "jms-smpp": "file:../jms-smpp",
     "jms-smpp-goip": "file:../jms-smpp-goip"
   },
   "repository": {
