@@ -1,12 +1,11 @@
 {
   "name": "jms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JSON Message Switch",
   "main": "jms.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node jms.js",
-    "postinstall": "node .install.js"
+    "start": "node jms.js"
   },
   "keywords": [
     "json",
@@ -24,6 +23,7 @@
     "jms-scheduler": "file:../jms-scheduler",
     "jms-smpp-gen": "file:../jms-smpp-gen",
     "jms-smpp": "file:../jms-smpp"
+    "jms-smpp-goip": "file:../jms-smpp-goip"
   },
   "repository": {
     "type": "git",

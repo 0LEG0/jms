@@ -1,11 +1,11 @@
 /**
  * JSON Message Switch
  * @author "0LEG0 <a.i.s@gmx.com>"
- * @version 1.0.0
+ * @version 1.0.1
  */
 "use strict";
 
-const { JEngine } = require("jms-engine");
+const { JEngine, JMessage } = require("jms-engine");
 const path = require("path");
 const minimist = require("minimist");
 
@@ -44,7 +44,8 @@ const CMD = {
     LOAD: /^module load (.+)/,
     UNLOAD: /^module unload (.+)/,
     RELOAD: /^module reload (.+)/,
-    HELP: /^(module.*|help module.*)/
+    HELP: /^(module.*|help module.*|help)$/,
+    STATUS: /^status/
 }
 
 // jengine.command handler
@@ -57,13 +58,19 @@ async function commandHandler(m) {
             m.result = "JSON Message Switch is shutting down...";
             stop();
             break;
+        case CMD.STATUS.test(line):
+            m.handled = true;
+            m.result = await Promise.all(JENGINE.getModules()
+                .filter(item => item)
+                .map(item => item.dispatch(new JMessage("jengine.status", {}, false, false, 1000)).then(m => new Object({ module: item.name, status: m.result })).catch(() => {})))
+            break;
         case CMD.LIST.test(line):
             m.handled = true;
             m.result = JENGINE.getModules()
                 .filter(item => item)
                 .map(item => {
                     return {
-                            name: item.name,
+                            module: item.name,
                             timeout: item.timeout,
                             // handles: Object.entries(item.installs)
                             //     .map(i => i.join(":"))
@@ -104,14 +111,14 @@ async function commandHandler(m) {
             }
             break;
         case CMD.HELP.test(line):
-            m.result = "Usage: module list|load|reload|unload [modulename]";
+            m.result = (m.result ? m.result : "") + "\nmodule list|load|reload|unload [modulename]";
     }
     return m;
 }
 
 async function stop() {
     if (JENGINE === null) return;
-    await Promise.all(
+    await Promise.allSettled(
         JENGINE.getModules()
         .filter(item => item)
         .map(handler => JENGINE.unload(handler))
