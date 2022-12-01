@@ -24,7 +24,7 @@ if (ARGV.h) {
     process.exit(0);
 }
 const PATH = ARGV.d ?? path.dirname(__filename);
-// process.chdir(PATH);
+process.chdir(PATH);
 process.env["NODE_PATH"] = (process.env["NODE_PATH"] ? ":" : process.env.PWD + "/node_modules:") + process.env.PWD;
 
 /**
