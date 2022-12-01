@@ -6,7 +6,7 @@
 "use strict";
 
 const { JEngine, JMessage } = require("jms-engine");
-const path = require("path");
+// const path = require("path");
 const minimist = require("minimist");
 
 const ARGV = minimist(process.argv.slice(2)); 
@@ -23,8 +23,9 @@ if (ARGV.h) {
     console.log("\nUsage: jms [options]\n\t\-h Help\n\t-c Full path to configuration file\n\t-d Path to jms home dir\n");
     process.exit(0);
 }
-const PATH = ARGV.d ?? path.dirname(__filename);
+const PATH = ARGV.d ?? __dirname;
 process.chdir(PATH);
+process.env["JMS_PATH"] = PATH;
 process.env["NODE_PATH"] = (process.env["NODE_PATH"] ? ":" : process.env.PWD + "/node_modules:") + process.env.PWD;
 
 /**
